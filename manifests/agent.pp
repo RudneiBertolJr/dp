@@ -8,6 +8,12 @@ class dataprotector::agent (
     ensure => present,
   }
 
+  /*
+  package { 'package':
+    provider         => 'rpm',
+    ensure      => installed,
+    source => "${examplerpm::rpm}"
+  }
 
-
+*/
 }
