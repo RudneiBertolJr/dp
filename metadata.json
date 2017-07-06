@@ -2,13 +2,18 @@
   "name": "tomelin-dataprotector",
   "version": "0.0.1",
   "author": "tomelin",
-  "summary": "This module install agent HP DataProtector,
+  "summary": "This module install agent HP DataProtector",
   "license": "Apache-2.0",
   "source": "",
   "project_page": null,
   "issues_url": null,
   "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+    {
+  	"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"
+    },
+    {
+  	"name":"puppetlabs-xinetd","version_requirement":">= 2.0.0"
+    }
   ],
   "data_provider": null,
   "tag": ["backup","hp","dataprotector"],
@@ -21,4 +26,3 @@
       ]
     }],
 }
-

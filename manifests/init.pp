@@ -51,7 +51,7 @@ class dataprotector (
 
 ) inherits dataprotector::params {
 
-	include dataprotector::install 
+  include xinetd
 
  if ( $is_agent == true ){
 	include dataprotector::agent
