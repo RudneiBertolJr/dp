@@ -45,22 +45,23 @@
 class dataprotector (
 
   $is_agent      = $::dataprotector::params::is_agent,
-  $is_is         = $::dataprotector::params::is_is,
   $dp_version    = $::dataprotector::params::dp_version,
   $agent_package = $::dataprotector::params::agent_package,
 
 ) inherits dataprotector::params {
 
-  include xinetd
+  require xinetd
 
  if ( $is_agent == true ){
 	include dataprotector::agent
  }
 
- if ( $is_is == true ){
-	include dataprotector::is
- }
-
+firewalld_port { 'Open port 5555 in the public zone':
+  ensure   => present,
+  zone     => 'public',
+  port     => 5575,
+  protocol => 'tcp',
+}
   
 
 }
