@@ -56,12 +56,5 @@ class dataprotector (
 	include dataprotector::agent
  }
 
-firewalld_port { 'Open port 5555 in the public zone':
-  ensure   => present,
-  zone     => 'public',
-  port     => 5575,
-  protocol => 'tcp',
-}
-  
 
 }
