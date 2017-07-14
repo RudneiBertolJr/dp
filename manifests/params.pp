@@ -27,7 +27,8 @@ class dataprotector::params {
 					  }
 				  }
         }
-        default: { 
+        default: {
+          class { 'firewall': }
           firewall { '5555 HP DataProtector':
             chain    => 'INPUT',
 					  dport    => "${dp_port}",
