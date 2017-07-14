@@ -18,13 +18,15 @@ class dataprotector::params {
     }
       case $facts[os][release][major] {
         '7': {
-        	firewalld_port { 'Allow inbound HP DataProtector 5555':
-  					ensure   => present,
-  					zone     => 'public',
-  					port     => $dp_port,
-  					protocol => 'tcp',
-					}
-				}
+          if $firewalld_state {
+        	  firewalld_port { 'Allow inbound HP DataProtector 5555':
+  				  	ensure   => present,
+  					  zone     => 'public',
+  					  port     => $dp_port,
+  					  protocol => 'tcp',
+					  }
+				  }
+        }
         default: { 
           firewall { '5555 HP DataProtector':
             chain    => 'INPUT',
