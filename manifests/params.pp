@@ -10,10 +10,10 @@ class dataprotector::params {
 			#Define architecture
       case $facts[os][architecture] {
         'x86_64': {
-          $agent_package = ["OB2-CORE-A.${dp_version}.x86_64.rpm", "OB2-DA-A.${dp_version}.x86_64.rpm" ]
+          $agent_package = [ "OB2-CORE-A.${dp_version}.x86_64.rpm", "OB2-DA-A.${dp_version}.x86_64.rpm" ]
 				}
         default: {  
-          $agent_package = "OB2-CORE-A.${dp_version}.i386.rpm" 
+          $agent_package = [ "OB2-CORE-A.${dp_version}.i386.rpm", "OB2-DA-A.${dp_version}.i386.rpm" ]
         }
     }
       case $facts[os][release][major] {
@@ -21,10 +21,10 @@ class dataprotector::params {
           if $firewalld_state {
         	  firewalld_port { 'Allow inbound HP DataProtector 5555':
   				  	ensure   => present,
-  					  zone     => 'public',
-  					  port     => $dp_port,
-  					  protocol => 'tcp',
-					  }
+  					zone     => 'public',
+  					port     => $dp_port,
+  					protocol => 'tcp',
+					}
 				  }
         }
         default: {
@@ -33,7 +33,7 @@ class dataprotector::params {
 					  dport    => "${dp_port}",
 					  proto    => 'tcp',
 					  action   => 'accept',
-  					provider => 'iptables',
+                                          provider => 'iptables',
 					}
         }
     }
